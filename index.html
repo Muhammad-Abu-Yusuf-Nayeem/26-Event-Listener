@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>event listener</title>
+  </head>
+  <body>
+    <main id="main">
+      <section class="container" id="fruits">
+        <h1>Favorite fruits</h1>
+        <ul>
+          <li>Pineapple</li>
+          <li>banana</li>
+          <li>Orange</li>
+        </ul>
+      </section>
+      <section class="container" id="places">
+        <h1>Favorite places</h1>
+        <ul>
+          <li>Dhaka</li>
+          <li>chandpur</li>
+          <li>Komilla</li>
+        </ul>
+      </section>
+      <section class="container" id="books">
+        <h1>Favorite books</h1>
+        <ul>
+          <li>Python learn the hard way</li>
+          <li>java</li>
+          <li>C++</li>
+        </ul>
+      </section>
+      <button id="red" onclick="style.backGroundColor = red;">bg red</button>
+      <button id="blue">bg blue</button>
+      <button id="purple">bg purple</button>
+      <button id="cyan">bg cyan</button>
+      <button id="orange">bg orange</button>
+    </main>
+    <script>
+      const bgRed = document.getElementsByClassName("container");
+
+      for (let i of bgRed) {
+        i.style.border = "2px solid black";
+        i.style.margin = "10px";
+        i.style.padding = "10px";
+        i.style.backgroundColor = "#99aa99";
+      }
+
+      bgRed.style.backGroundColor = red;
+    </script>
+    <script></script>
+  </body>
+</html>
