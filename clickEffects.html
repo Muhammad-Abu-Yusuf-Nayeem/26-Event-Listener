@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Click Effects</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+      }
+      .box {
+        width: 150px;
+        height: 100px;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>JavaScript Click Effects</h2>
+    <button id="bgChange">Change Background</button>
+    <button id="addBorder">Add Border to Boxes</button>
+    <button id="addText">Add Text to Boxes</button>
+    <button id="changeTextColor">Change Text Color</button>
+    <button id="increaseSize">Increase Box Size</button>
+    <button id="rotateBoxes">Rotate Boxes</button>
+    <button id="changeBoxBg">Change Box Background</button>
+    <button id="hideBoxes">Hide Boxes</button>
+    <button id="showBoxes">Show Boxes</button>
+    <button id="roundCorners">Round Box Corners</button>
+    <button id="shakeBoxes">Shake Boxes</button>
+    <button id="reset">Reset Effects</button>
+
+    <div class="container">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("bgChange")
+        .addEventListener("click", function () {
+          document.body.style.backgroundColor = "#f4a261";
+        });
+
+      document
+        .getElementById("addBorder")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.border = "2px solid black";
+          });
+        });
+
+      document.getElementById("addText").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box, index) => {
+          box.textContent = "Box " + (index + 1);
+        });
+      });
+
+      document
+        .getElementById("changeTextColor")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.color = "blue";
+          });
+        });
+
+      document
+        .getElementById("increaseSize")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.width = "200px";
+            box.style.height = "150px";
+          });
+        });
+
+      document
+        .getElementById("rotateBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "rotate(15deg)";
+          });
+        });
+
+      document
+        .getElementById("changeBoxBg")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.backgroundColor = "#e76f51";
+          });
+        });
+
+      document
+        .getElementById("hideBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.display = "none";
+          });
+        });
+
+      document
+        .getElementById("showBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.display = "flex";
+          });
+        });
+
+      document
+        .getElementById("roundCorners")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.borderRadius = "20px";
+          });
+        });
+
+      document
+        .getElementById("shakeBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.animation = "shake 0.5s";
+          });
+        });
+
+      document.getElementById("reset").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.removeAttribute("style");
+        });
+        document.body.style.backgroundColor = "";
+      });
+    </script>
+  </body>
+</html>
