@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate JS Click Effects</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+        justify-content: center;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.5s ease;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Ultimate JavaScript Click Effects</h2>
+    <button id="randomGradient">Random Gradient</button>
+    <button id="zoomIn">Zoom In</button>
+    <button id="zoomOut">Zoom Out</button>
+    <button id="rainbowBg">Rainbow Background</button>
+    <button id="flipX">Flip X</button>
+    <button id="flipY">Flip Y</button>
+    <button id="rotate">Rotate Continuously</button>
+    <button id="dropShadow">Drop Shadow</button>
+    <button id="blurMore">Extreme Blur</button>
+    <button id="discoLights">Disco Mode</button>
+    <button id="reset">Reset Effects</button>
+
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+
+    <script>
+      function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+
+      document
+        .getElementById("randomGradient")
+        .addEventListener("click", function () {
+          document.body.style.background = `linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()})`;
+        });
+
+      document.getElementById("zoomIn").addEventListener("click", function () {
+        document.body.style.transform = "scale(1.2)";
+      });
+
+      document.getElementById("zoomOut").addEventListener("click", function () {
+        document.body.style.transform = "scale(0.8)";
+      });
+
+      document
+        .getElementById("rainbowBg")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.background = `linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)`;
+          });
+        });
+
+      document.getElementById("flipX").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.style.transform = "scaleX(-1)";
+        });
+      });
+
+      document.getElementById("flipY").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.style.transform = "scaleY(-1)";
+        });
+      });
+
+      document.getElementById("rotate").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.style.animation = "spin 2s linear infinite";
+        });
+      });
+
+      document
+        .getElementById("dropShadow")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.boxShadow = "10px 10px 20px rgba(0,0,0,0.5)";
+          });
+        });
+
+      document
+        .getElementById("blurMore")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.filter = "blur(10px)";
+          });
+        });
+
+      document
+        .getElementById("discoLights")
+        .addEventListener("click", function () {
+          setInterval(() => {
+            document.querySelectorAll(".box").forEach((box) => {
+              box.style.backgroundColor = getRandomColor();
+            });
+          }, 500);
+        });
+
+      document.getElementById("reset").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.removeAttribute("style");
+        });
+        document.body.removeAttribute("style");
+      });
+    </script>
+  </body>
+</html>

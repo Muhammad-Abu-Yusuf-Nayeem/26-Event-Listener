@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate JS Click Effects</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+        justify-content: center;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.5s ease;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes explosion {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(3);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(0);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Ultimate JavaScript Click Effects</h2>
+    <button id="explode">Explode Boxes</button>
+    <button id="teleport">Teleport Boxes</button>
+    <button id="hypnotize">Hypnotize</button>
+    <button id="gravity">Gravity Fall</button>
+    <button id="cloneBoxes">Clone Boxes</button>
+    <button id="reset">Reset Effects</button>
+
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+
+    <script>
+      document.getElementById("explode").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.style.animation = "explosion 1s forwards";
+        });
+      });
+
+      document
+        .getElementById("teleport")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.position = "absolute";
+            box.style.left = Math.random() * window.innerWidth + "px";
+            box.style.top = Math.random() * window.innerHeight + "px";
+          });
+        });
+
+      document
+        .getElementById("hypnotize")
+        .addEventListener("click", function () {
+          document.body.style.animation = "spin 3s linear infinite";
+        });
+
+      document.getElementById("gravity").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.style.transition = "all 2s ease-in";
+          box.style.transform = "translateY(500px) rotate(720deg)";
+        });
+      });
+
+      document
+        .getElementById("cloneBoxes")
+        .addEventListener("click", function () {
+          let container = document.querySelector(".container");
+          document.querySelectorAll(".box").forEach((box) => {
+            let clone = box.cloneNode(true);
+            container.appendChild(clone);
+          });
+        });
+
+      document.getElementById("reset").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.removeAttribute("style");
+        });
+        document.body.removeAttribute("style");
+      });
+    </script>
+  </body>
+</html>
