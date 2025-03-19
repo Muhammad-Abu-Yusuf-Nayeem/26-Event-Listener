@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced JS Click Effects</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+        justify-content: center;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Advanced JavaScript Click Effects</h2>
+    <button id="randomColor">Random Color</button>
+    <button id="flipBoxes">Flip Boxes</button>
+    <button id="fadeBoxes">Fade Out Boxes</button>
+    <button id="growBoxes">Grow Boxes</button>
+    <button id="shrinkBoxes">Shrink Boxes</button>
+    <button id="wiggleBoxes">Wiggle Boxes</button>
+    <button id="changeFont">Change Font Style</button>
+    <button id="glowEffect">Glow Effect</button>
+    <button id="moveRight">Move Right</button>
+    <button id="reset">Reset</button>
+
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+
+    <script>
+      function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+
+      document
+        .getElementById("randomColor")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.backgroundColor = getRandomColor();
+          });
+        });
+
+      document
+        .getElementById("flipBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "rotateY(180deg)";
+          });
+        });
+
+      document
+        .getElementById("fadeBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.opacity = "0";
+          });
+        });
+
+      document
+        .getElementById("growBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "scale(1.5)";
+          });
+        });
+
+      document
+        .getElementById("shrinkBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "scale(0.5)";
+          });
+        });
+
+      document
+        .getElementById("wiggleBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.animation = "shake 0.5s infinite";
+          });
+        });
+
+      document
+        .getElementById("changeFont")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.fontFamily = "Comic Sans MS, cursive, sans-serif";
+          });
+        });
+
+      document
+        .getElementById("glowEffect")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.boxShadow = "0px 0px 15px 5px yellow";
+          });
+        });
+
+      document
+        .getElementById("moveRight")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "translateX(50px)";
+          });
+        });
+
+      document.getElementById("reset").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.removeAttribute("style");
+        });
+      });
+    </script>
+  </body>
+</html>
