@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extreme JS Click Effects</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+        justify-content: center;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.5s ease;
+      }
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Extreme JavaScript Click Effects</h2>
+    <button id="randomBgColor">Random Background</button>
+    <button id="spinBoxes">Spin Boxes</button>
+    <button id="bounceBoxes">Bounce Boxes</button>
+    <button id="blurEffect">Blur Effect</button>
+    <button id="mirrorEffect">Mirror Effect</button>
+    <button id="neonGlow">Neon Glow</button>
+    <button id="flip360">360 Flip</button>
+    <button id="skewBoxes">Skew Boxes</button>
+    <button id="rainbowText">Rainbow Text</button>
+    <button id="rotateColor">Rotate Colors</button>
+    <button id="reset">Reset Effects</button>
+
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div>
+
+    <script>
+      function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+
+      document
+        .getElementById("randomBgColor")
+        .addEventListener("click", function () {
+          document.body.style.backgroundColor = getRandomColor();
+        });
+
+      document
+        .getElementById("spinBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "rotate(720deg)";
+          });
+        });
+
+      document
+        .getElementById("bounceBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.animation = "pulse 0.5s infinite";
+          });
+        });
+
+      document
+        .getElementById("blurEffect")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.filter = "blur(5px)";
+          });
+        });
+
+      document
+        .getElementById("mirrorEffect")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "scaleX(-1)";
+          });
+        });
+
+      document
+        .getElementById("neonGlow")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.boxShadow = "0px 0px 20px cyan";
+            box.style.color = "cyan";
+          });
+        });
+
+      document.getElementById("flip360").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.style.transform = "rotateY(360deg)";
+        });
+      });
+
+      document
+        .getElementById("skewBoxes")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.transform = "skew(20deg, 10deg)";
+          });
+        });
+
+      document
+        .getElementById("rainbowText")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.color = getRandomColor();
+          });
+        });
+
+      document
+        .getElementById("rotateColor")
+        .addEventListener("click", function () {
+          document.querySelectorAll(".box").forEach((box) => {
+            let color = getRandomColor();
+            box.style.backgroundColor = color;
+            box.style.color = color === "#ffffff" ? "black" : "white";
+          });
+        });
+
+      document.getElementById("reset").addEventListener("click", function () {
+        document.querySelectorAll(".box").forEach((box) => {
+          box.removeAttribute("style");
+        });
+        document.body.style.backgroundColor = "";
+      });
+    </script>
+  </body>
+</html>
