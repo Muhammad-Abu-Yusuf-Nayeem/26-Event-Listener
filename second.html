@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Click Event Practice</title>
+  </head>
+  <body>
+    <h2>JavaScript Click Event - Multiple Approaches</h2>
+
+    <!-- Inline JavaScript -->
+    <button onclick="alert('Button Clicked - Inline JS')">
+      Click Me (Inline JS)
+    </button>
+
+    <!-- Using JavaScript inside script tag -->
+    <button id="btn1">Click Me (Script Tag)</button>
+
+    <!-- Using addEventListener -->
+    <button id="btn2">Click Me (addEventListener)</button>
+
+    <!-- Using Arrow Function in Event Listener -->
+    <button id="btn3">Click Me (Arrow Function)</button>
+
+    <!-- Using an external function -->
+    <button id="btn4">Click Me (External Function)</button>
+
+    <!-- Using Event Object -->
+    <button id="btn5">Click Me (Event Object)</button>
+
+    <script>
+      // Approach 1: Using script tag and assigning onclick directly
+      document.getElementById("btn1").onclick = function () {
+        alert("Button Clicked - Script Tag");
+      };
+
+      // Approach 2: Using addEventListener
+      document.getElementById("btn2").addEventListener("click", function () {
+        alert("Button Clicked - addEventListener");
+      });
+
+      // Approach 3: Using Arrow Function in addEventListener
+      document.getElementById("btn3").addEventListener("click", () => {
+        alert("Button Clicked - Arrow Function");
+      });
+
+      // Approach 4: Using an external function
+      function externalFunction() {
+        alert("Button Clicked - External Function");
+      }
+      document
+        .getElementById("btn4")
+        .addEventListener("click", externalFunction);
+
+      // Approach 5: Using Event Object
+      document
+        .getElementById("btn5")
+        .addEventListener("click", function (event) {
+          alert("Button Clicked - Event Object: " + event.type);
+        });
+    </script>
+  </body>
+</html>
