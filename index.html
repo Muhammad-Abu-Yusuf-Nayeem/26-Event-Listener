@@ -3,52 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>event listener</title>
+    <title>Event Handling in JavaScript</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        margin: 10px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <main id="main">
-      <section class="container" id="fruits">
-        <h1>Favorite fruits</h1>
-        <ul>
-          <li>Pineapple</li>
-          <li>banana</li>
-          <li>Orange</li>
-        </ul>
-      </section>
-      <section class="container" id="places">
-        <h1>Favorite places</h1>
-        <ul>
-          <li>Dhaka</li>
-          <li>chandpur</li>
-          <li>Komilla</li>
-        </ul>
-      </section>
-      <section class="container" id="books">
-        <h1>Favorite books</h1>
-        <ul>
-          <li>Python learn the hard way</li>
-          <li>java</li>
-          <li>C++</li>
-        </ul>
-      </section>
-      <button id="red" onclick="style.backGroundColor = red;">bg red</button>
-      <button id="blue">bg blue</button>
-      <button id="purple">bg purple</button>
-      <button id="cyan">bg cyan</button>
-      <button id="orange">bg orange</button>
-    </main>
-    <script>
-      const bgRed = document.getElementsByClassName("container");
+    <h1>JavaScript Event Handling Examples</h1>
 
-      for (let i of bgRed) {
-        i.style.border = "2px solid black";
-        i.style.margin = "10px";
-        i.style.padding = "10px";
-        i.style.backgroundColor = "#99aa99";
+    <!-- 1️⃣ Inline onclick method (Old way, not recommended) -->
+    <h2>1️⃣ Inline onclick Attribute</h2>
+    <button onclick="changeBackgroundColor('red')">bg red</button>
+    <button onclick="changeBackgroundColor('blue')">bg blue</button>
+
+    <!-- 2️⃣ Using getElementById -->
+    <h2>2️⃣ Using getElementById</h2>
+    <button id="red">bg red</button>
+    <button id="blue">bg blue</button>
+
+    <!-- 3️⃣ Using querySelectorAll and forEach -->
+    <h2>3️⃣ Using querySelectorAll</h2>
+    <button class="color-btn" data-color="purple">bg purple</button>
+    <button class="color-btn" data-color="cyan">bg cyan</button>
+
+    <!-- 4️⃣ Using Event Delegation -->
+    <h2>4️⃣ Using Event Delegation</h2>
+    <main id="button-container">
+      <button class="delegated-btn">bg orange</button>
+      <button class="delegated-btn">bg yellow</button>
+    </main>
+
+    <script>
+      // Function to change background color
+      function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color;
       }
 
-      bgRed.style.backGroundColor = red;
+      // 2️⃣ Using getElementById
+      document.getElementById("red").addEventListener("click", function () {
+        document.body.style.backgroundColor = "red";
+      });
+
+      document.getElementById("blue").addEventListener("click", function () {
+        document.body.style.backgroundColor = "blue";
+      });
+
+      // 3️⃣ Using querySelectorAll and forEach
+      document.querySelectorAll(".color-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          let color = this.getAttribute("data-color");
+          document.body.style.backgroundColor = color;
+        });
+      });
+
+      // 4️⃣ Using Event Delegation
+      document
+        .getElementById("button-container")
+        .addEventListener("click", function (event) {
+          if (event.target.tagName === "BUTTON") {
+            let color = event.target.textContent.split(" ")[1]; // Extract color from button text
+            document.body.style.backgroundColor = color;
+          }
+        });
     </script>
-    <script></script>
   </body>
 </html>
