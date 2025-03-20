@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Event Handling</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      button,
+      a {
+        margin: 10px;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .container {
+        padding: 20px;
+        border: 2px solid black;
+        margin: 10px;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Different Ways to Handle Events in JavaScript</h1>
+
+    <!-- 1️⃣ Inline onclick method -->
+    <h2>1️⃣ Inline onclick (Not Recommended)</h2>
+    <button onclick="changeBackgroundColor('red')">bg red</button>
+
+    <!-- 2️⃣ Using getElementById -->
+    <h2>2️⃣ Using getElementById</h2>
+    <button id="btn1">Click me</button>
+
+    <!-- 3️⃣ Using addEventListener -->
+    <h2>3️⃣ Using addEventListener</h2>
+    <button id="btn2">Click me</button>
+
+    <!-- 4️⃣ Using Arrow Function -->
+    <h2>4️⃣ Using Arrow Function</h2>
+    <button id="btn3">Click me</button>
+
+    <!-- 5️⃣ Multiple Events on Same Element -->
+    <h2>5️⃣ Multiple Events on Same Element</h2>
+    <button id="btn4">Hover or Click me</button>
+
+    <!-- 6️⃣ Removing Event Listener -->
+    <h2>6️⃣ Removing Event Listener</h2>
+    <button id="btn5">Click to Disable</button>
+
+    <!-- 7️⃣ Once Event Listener (Trigger Only Once) -->
+    <h2>7️⃣ Once Event Listener</h2>
+    <button id="btn6">Click me (only once)</button>
+
+    <!-- 8️⃣ Prevent Default Behavior -->
+    <h2>8️⃣ Prevent Default Behavior</h2>
+    <a href="https://google.com" id="btn7">Don't go to Google</a>
+
+    <!-- 9️⃣ Stop Event Propagation -->
+    <h2>9️⃣ Stop Event Propagation</h2>
+    <div class="container" id="parent">
+      <button id="btn8">Click me</button>
+    </div>
+
+    <!-- 🔟 "this" in Event Handlers -->
+    <h2>🔟 "this" in Event Handlers</h2>
+    <button class="btn9">Click me</button>
+
+    <script>
+      // Function for inline onclick
+      function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color;
+      }
+
+      // 2️⃣ Using getElementById
+      document.getElementById("btn1").onclick = function () {
+        alert("Button clicked using onclick property!");
+      };
+
+      // 3️⃣ Using addEventListener
+      document.getElementById("btn2").addEventListener("click", function () {
+        alert("Button clicked using addEventListener!");
+      });
+
+      // 4️⃣ Using Arrow Function
+      document.getElementById("btn3").addEventListener("click", () => {
+        alert("Button clicked using an arrow function!");
+      });
+
+      // 5️⃣ Multiple Events on Same Element
+      function showAlert() {
+        alert("Event triggered!");
+      }
+      let btn4 = document.getElementById("btn4");
+      btn4.addEventListener("click", showAlert);
+      btn4.addEventListener("mouseover", showAlert);
+
+      // 6️⃣ Removing Event Listener
+      function disableClick() {
+        alert("Button clicked!");
+        document
+          .getElementById("btn5")
+          .removeEventListener("click", disableClick);
+      }
+      document.getElementById("btn5").addEventListener("click", disableClick);
+
+      // 7️⃣ Once Event Listener (Trigger Only Once)
+      document.getElementById("btn6").addEventListener(
+        "click",
+        () => {
+          alert("This button can be clicked only once!");
+        },
+        { once: true }
+      );
+
+      // 8️⃣ Prevent Default Behavior
+      document
+        .getElementById("btn7")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          alert("Default action prevented!");
+        });
+
+      // 9️⃣ Stop Event Propagation
+      document.getElementById("parent").addEventListener("click", () => {
+        alert("Parent div clicked!");
+      });
+
+      document.getElementById("btn8").addEventListener("click", (event) => {
+        event.stopPropagation();
+        alert("Button clicked!");
+      });
+
+      // 🔟 "this" in Event Handlers
+      document.querySelector(".btn9").addEventListener("click", function () {
+        this.style.backgroundColor = "green";
+      });
+    </script>
+  </body>
+</html>
