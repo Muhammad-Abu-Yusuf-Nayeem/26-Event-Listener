@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling with Colors</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+      }
+      .outer,
+      .middle,
+      .inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+      .outer {
+        width: 300px;
+        height: 300px;
+        background-color: lightblue;
+      }
+      .middle {
+        width: 200px;
+        height: 200px;
+        background-color: lightcoral;
+      }
+      .inner {
+        width: 100px;
+        height: 100px;
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      Outer (Click Me)
+      <div class="middle">
+        Middle (Click Me)
+        <div class="inner">Inner (Click Me)</div>
+      </div>
+    </div>
+
+    <script>
+      function getRandomColor() {
+        return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+      }
+
+      document.querySelector(".outer").addEventListener("click", function () {
+        this.style.backgroundColor = getRandomColor();
+        console.log("Outer Div Clicked!");
+      });
+
+      document
+        .querySelector(".middle")
+        .addEventListener("click", function (event) {
+          this.style.backgroundColor = getRandomColor();
+          console.log("Middle Div Clicked!");
+        });
+
+      document
+        .querySelector(".inner")
+        .addEventListener("click", function (event) {
+          this.style.backgroundColor = getRandomColor();
+          console.log("Inner Div Clicked! Stopping Propagation.");
+          event.stopPropagation();
+        });
+    </script>
+  </body>
+</html>
