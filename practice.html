@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>26 mod</title>
+  </head>
+  <body>
+    <h1>Final DOM handler</h1>
+    <h3 id="handler-status">Default text</h3>
+    <button onclick="handleOnClick()">
+      Handle event by add onclick Function
+    </button>
+    <button id="Event-Listener">Handled by addEventListener</button>
+
+    <script>
+      function handleOnClick() {
+        const handlerStatus = document.getElementById("handler-status");
+
+        if (handlerStatus.innerText == "Default text") {
+          handlerStatus.innerText =
+            "handled by function attached on onclick attribute";
+        } else {
+          handlerStatus.innerText = "Default text";
+        }
+      }
+      document
+        .getElementById("Event-Listener")
+        .addEventListener("click", function () {
+          const EventListener = document.getElementById("handler-status");
+          if (EventListener.innerText == "Default text") {
+            EventListener.innerText =
+              "handled by function attached on addEventListener attribute";
+          } else {
+            EventListener.innerText = "Default text";
+          }
+        });
+    </script>
+  </body>
+</html>
