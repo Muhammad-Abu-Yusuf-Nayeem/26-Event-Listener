@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>comment box</title>
+  </head>
+  <body>
+    <main>
+      <h2>Today we will practice comment box added by java script</h2>
+      <section id="comment-box">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          neque quis delectus rem doloremque hic eligendi praesentium aperiam
+          modi nobis.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          neque quis delectus rem doloremque hic eligendi praesentium aperiam
+          modi nobis.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          neque quis delectus rem doloremque hic eligendi praesentium aperiam
+          modi nobis.
+        </p>
+      </section>
+      <div>
+        <textarea name="" id="new-comment" cols="60" rows="5"></textarea><br />
+        <button type="button" id="btn-post">Post</button>
+      </div>
+    </main>
+
+    <script>
+      document
+        .getElementById("btn-post")
+        .addEventListener("click", function () {
+          // console.log("post button clicked")
+          const commentBox = document.getElementById("new-comment");
+          const newComment = commentBox.value;
+          //    console.log(newComment);
+          const p = document.createElement("p");
+          p.innerText = newComment;
+
+          document.getElementById("comment-box").append(p);
+        });
+    </script>
+  </body>
+</html>
